@@ -95,6 +95,9 @@ all_subjects<-rbind(test_subjects,train_subjects)
 ##add the subjects info to "newdataset"
 mydata<-cbind(all_subjects,newdataset)
 colnames(mydata)[1]<-"Subject"
+##use plyr library to summarize the dataset, 
+##group the dataset based on subject and activity and 
+##calculate the mean for a certain activity performed by the subject for each column (variable).
 library(plyr)
 summary<-ddply(mydata, .(Subject,Activity_Name),numcolwise(mean))
 ##write data as txt file 
